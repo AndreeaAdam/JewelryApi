@@ -26,11 +26,13 @@ public class ProductMaterialService {
                 .collect(Collectors.toList());
     }
 
-    public ProductMaterialDto getProductMaterialById(Long id) {
+    public ProductMaterialDto getProductMaterialById(Long id) throws ProductMaterialNotFoundException {
         ProductMaterial productMaterial = productMaterialRepository.findById(id).orElse(null);
         ProductMaterialDto productMaterialDto = null;
         if (productMaterial != null) {
             productMaterialDto = mapper.productMaterialToDto(productMaterial);
+        } else{
+            throw new ProductMaterialNotFoundException();
         }
         return productMaterialDto;
     }
@@ -45,9 +47,9 @@ public class ProductMaterialService {
         return mapper.productMaterialToDto(productMaterial);
     }
 
-    public void deleteProductMaterial(Long id) {
+    public ProductMaterialDto deleteProductMaterial(Long id) throws ProductMaterialNotFoundException {
         ProductMaterialDto productMaterialDto = getProductMaterialById(id);
         productMaterialRepository.delete(mapper.productMaterialDtoToModel(productMaterialDto));
-        productMaterialRepository.deleteById(id);
+        return productMaterialDto;
     }
 }

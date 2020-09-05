@@ -26,11 +26,13 @@ public class GemstoneService {
                 .collect(Collectors.toList());
     }
 
-    public GemstoneDto getGemstoneById(Long id) {
+    public GemstoneDto getGemstoneById(Long id) throws GemstoneNotFoundException {
         Gemstone gemstone = gemstoneRepository.findById(id).orElse(null);
         GemstoneDto result = null;
         if (gemstone != null) {
             result = mapper.gemstoneToDto(gemstone);
+        } else {
+            throw new GemstoneNotFoundException();
         }
         return result;
     }
@@ -45,9 +47,9 @@ public class GemstoneService {
         return mapper.gemstoneToDto(gemstone);
     }
 
-    public void deleteGemstone(Long id) {
+    public GemstoneDto deleteGemstone(Long id) throws GemstoneNotFoundException {
         GemstoneDto gemstoneDto = getGemstoneById(id);
         gemstoneRepository.delete(mapper.gemstoneDtoToModel(gemstoneDto));
-        gemstoneRepository.deleteById(id);
+        return gemstoneDto;
     }
 }

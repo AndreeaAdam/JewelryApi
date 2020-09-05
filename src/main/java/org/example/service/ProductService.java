@@ -26,11 +26,13 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public ProductDto getProductById(Long id) {
+    public ProductDto getProductById(Long id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElse(null);
         ProductDto productDto = null;
         if (product != null) {
             productDto = mapper.productToDto(product);
+        } else{
+            throw new ProductNotFoundException();
         }
         return productDto;
     }
@@ -45,9 +47,9 @@ public class ProductService {
         return mapper.productToDto(product);
     }
 
-    public void deleteProduct(Long id) {
+    public ProductDto deleteProduct(Long id) throws ProductNotFoundException {
         ProductDto productDto = getProductById(id);
         productRepository.delete(mapper.productDtoToModel(productDto));
-        productRepository.deleteById(id);
+        return productDto;
     }
 }

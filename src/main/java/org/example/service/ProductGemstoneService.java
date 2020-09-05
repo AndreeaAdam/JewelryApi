@@ -26,11 +26,13 @@ public class ProductGemstoneService {
                 .collect(Collectors.toList());
     }
 
-    public ProductGemstoneDto getGemstoneById(Long id) {
+    public ProductGemstoneDto getGemstoneById(Long id) throws ProductGemstoneNotFoundException {
         ProductGemstone productGemstone = productGemstoneRepository.findById(id).orElse(null);
         ProductGemstoneDto productGemstoneDto = null;
         if (productGemstone != null) {
             productGemstoneDto = mapper.productGemstoneToDto(productGemstone);
+        } else {
+            throw new ProductGemstoneNotFoundException();
         }
         return productGemstoneDto;
     }
@@ -45,9 +47,9 @@ public class ProductGemstoneService {
         return mapper.productGemstoneToDto(productGemstone);
     }
 
-    public void deleteProductGemstone(Long id) {
+    public ProductGemstoneDto deleteProductGemstone(Long id) throws ProductGemstoneNotFoundException {
         ProductGemstoneDto productGemstoneDto = getGemstoneById(id);
         productGemstoneRepository.delete(mapper.productGemstoneDtoToModel(productGemstoneDto));
-        productGemstoneRepository.deleteById(id);
+        return productGemstoneDto;
     }
 }

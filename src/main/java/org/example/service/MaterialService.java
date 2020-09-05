@@ -26,11 +26,13 @@ public class MaterialService {
                 .collect(Collectors.toList());
     }
 
-    public MaterialDto getMaterialById(Long id) {
+    public MaterialDto getMaterialById(Long id) throws MaterialNotFoundException {
         Material material = materialRepository.findById(id).orElse(null);
         MaterialDto materialDto = null;
         if (material != null) {
             materialDto = mapper.materialToDto(material);
+        } else {
+            throw new MaterialNotFoundException();
         }
         return materialDto;
     }
@@ -45,10 +47,10 @@ public class MaterialService {
         return mapper.materialToDto(material);
     }
 
-    public void deleteMaterial(Long id) {
+    public MaterialDto deleteMaterial(Long id) throws MaterialNotFoundException {
         MaterialDto materialDto = getMaterialById(id);
         materialRepository.delete(mapper.materialDtoToModel(materialDto));
-        materialRepository.deleteById(id);
+        return materialDto;
 
     }
 }

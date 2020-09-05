@@ -26,11 +26,13 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    public CategoryDto getCategoryById(Long id) {
+    public CategoryDto getCategoryById(Long id) throws CategoryNotFoundException {
         Category category = categoryRepository.findById(id).orElse(null);
         CategoryDto result = null;
         if (category != null) {
             result = mapper.categoryToDto(category);
+        } else{
+            throw new CategoryNotFoundException();
         }
         return result;
     }
@@ -46,9 +48,9 @@ public class CategoryService {
 
     }
 
-    public void deleteCategory(Long id) {
+    public CategoryDto deleteCategory(Long id) throws CategoryNotFoundException {
         CategoryDto categoryDto = getCategoryById(id);
         categoryRepository.delete(mapper.categoryDtoToModel(categoryDto));
-        categoryRepository.deleteById(id);
+        return categoryDto;
     }
 }

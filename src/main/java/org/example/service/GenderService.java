@@ -26,11 +26,13 @@ public class GenderService {
                 .collect(Collectors.toList());
     }
 
-    public GenderDto getGenderById(Long id) {
+    public GenderDto getGenderById(Long id) throws GenderNotFoundException {
         Gender gender = genderRepository.findById(id).orElse(null);
         GenderDto genderDto = null;
         if (gender != null) {
             genderDto = mapper.genderToDto(gender);
+        } else{
+            throw new GenderNotFoundException();
         }
         return genderDto;
     }
@@ -45,10 +47,10 @@ public class GenderService {
         return mapper.genderToDto(gender);
     }
 
-    public void deleteGender(Long id) {
+    public GenderDto deleteGender(Long id) throws GenderNotFoundException {
         GenderDto genderDto = getGenderById(id);
         genderRepository.delete(mapper.genderDtoToModel(genderDto));
-        genderRepository.deleteById(id);
+        return genderDto;
 
     }
 }
