@@ -15,6 +15,7 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+    ResponseEntity responseEntity;
 
     @GetMapping("/categories")
     public List<CategoryDto> readCategory() {
@@ -24,7 +25,7 @@ public class CategoryController {
 
     @GetMapping("categories/{id}")
     public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id) {
-        ResponseEntity responseEntity;
+
         try {
             responseEntity = new ResponseEntity(categoryService.getCategoryById(id), HttpStatus.OK);
         } catch (CategoryNotFoundException e) {
@@ -36,7 +37,6 @@ public class CategoryController {
     @PutMapping("/categories")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CategoryDto> editCategory(@RequestBody CategoryDto categoryDto) {
-        ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity(categoryService.saveCategory(categoryDto), HttpStatus.OK);
         } catch (CategoryNotFoundException e) {
@@ -48,7 +48,6 @@ public class CategoryController {
     @PostMapping("/categories")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<CategoryDto> addCategory(@RequestBody CategoryDto categoryDto) {
-        ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity(categoryService.saveCategory(categoryDto), HttpStatus.OK);
         } catch (CategoryNotFoundException e) {
@@ -59,7 +58,6 @@ public class CategoryController {
 
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<CategoryDto> deleteCategory(@PathVariable Long id) {
-        ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity<>(categoryService.deleteCategory(id), HttpStatus.OK);
         } catch (CategoryNotFoundException e) {
