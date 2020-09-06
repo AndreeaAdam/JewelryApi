@@ -19,7 +19,8 @@ public class Product {
 
     private double price;
 
-    @OneToOne(mappedBy ="product")
+    @OneToOne
+    @JoinColumn(name = "gender_id", foreignKey = @ForeignKey(name = "GENDER_ID_FK"))
     private Gender gender;
 
     @ManyToOne
