@@ -12,10 +12,12 @@ public class ProductMaterial {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "material")
-    private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "PM_PRODUCT_ID_FK"))
+    private Product product;
 
-    @OneToMany(mappedBy = "productMaterial")
-    private List<Material> materials;
+    @ManyToOne
+    @JoinColumn(name = "material_id", foreignKey = @ForeignKey(name = "PM_MATERIAL_ID_FK"))
+    private Material material;
 
 }

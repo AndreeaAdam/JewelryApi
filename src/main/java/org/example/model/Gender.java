@@ -3,6 +3,7 @@ package org.example.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -12,7 +13,6 @@ public class Gender {
     private Long id;
     private String type;
 
-    @OneToOne(mappedBy = "gender")
-    private Product product;
-
+    @OneToMany(mappedBy = "gender")
+    private List<Product> products;
 }
