@@ -9,4 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductGemstoneDto {
     private Long id;
+
+    private Long gemstoneId;
+    private Long productId;
+
 }

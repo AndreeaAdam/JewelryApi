@@ -16,6 +16,5 @@ public class ProductDto {
     private Long quantity;
 
     private Long categoryId;
-    private Long gemstoneId;
-    private Long materialId;
+    private Long genderId;
 }

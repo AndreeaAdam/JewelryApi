@@ -9,4 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductMaterialDto {
     private Long id;
+
+    private Long materialId;
+    private Long productId;
 }
