@@ -39,7 +39,7 @@ public class GenderService {
 
     public GenderDto saveGender(GenderDto genderDto) throws GenderNotFoundException {
         if (genderDto.getId() != null && genderDto.getId() > 0
-                && genderRepository.existsById(genderDto.getId())) {
+                && !genderRepository.existsById(genderDto.getId())) {
             throw new GenderNotFoundException();
         }
         Gender gender = mapper.genderDtoToModel(genderDto);

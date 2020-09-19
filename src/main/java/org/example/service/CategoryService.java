@@ -39,7 +39,7 @@ public class CategoryService {
 
     public CategoryDto saveCategory(CategoryDto categoryDto) throws CategoryNotFoundException {
         if (categoryDto.getId() != null && categoryDto.getId() > 0
-                && categoryRepository.existsById(categoryDto.getId())) {
+                && !categoryRepository.existsById(categoryDto.getId())) {
             throw new CategoryNotFoundException();
         }
         Category category = mapper.categoryDtoToModel(categoryDto);

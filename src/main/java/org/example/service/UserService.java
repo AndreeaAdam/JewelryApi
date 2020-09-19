@@ -28,7 +28,7 @@ public class UserService {
 
     public UserDto getUserById(Long id) throws UserNotFoundException {
         User user = userRepository.findById(id).orElse(null);
-        UserDto userDto = null;
+        UserDto userDto;
         if (user != null) {
             userDto = mapper.userToDto(user);
         } else {
@@ -39,7 +39,7 @@ public class UserService {
 
     public UserDto saveUser(UserDto userDto) throws UserNotFoundException {
         if (userDto.getId() != null && userDto.getId() > 0
-                && userRepository.existsById(userDto.getId())) {
+                && !userRepository.existsById(userDto.getId())) {
             throw new UserNotFoundException();
         }
         User user = mapper.userDtoToModel(userDto);

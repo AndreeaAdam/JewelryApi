@@ -39,7 +39,7 @@ public class ProductGemstoneService {
 
     public ProductGemstoneDto saveProductGemstone(ProductGemstoneDto productGemstoneDto) throws ProductGemstoneNotFoundException {
         if (productGemstoneDto.getId() != null && productGemstoneDto.getId() > 0
-                && productGemstoneRepository.existsById(productGemstoneDto.getId())) {
+                && !productGemstoneRepository.existsById(productGemstoneDto.getId())) {
             throw new ProductGemstoneNotFoundException();
         }
         ProductGemstone productGemstone = mapper.productGemstoneDtoToModel(productGemstoneDto);

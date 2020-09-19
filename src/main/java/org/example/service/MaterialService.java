@@ -39,7 +39,7 @@ public class MaterialService {
 
     public MaterialDto saveMaterial(MaterialDto materialDto) throws MaterialNotFoundException {
         if (materialDto.getId() != null && materialDto.getId() > 0
-                && materialRepository.existsById(materialDto.getId())) {
+                && !materialRepository.existsById(materialDto.getId())) {
             throw new MaterialNotFoundException();
         }
         Material material = mapper.materialDtoToModel(materialDto);

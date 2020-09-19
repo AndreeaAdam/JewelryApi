@@ -39,7 +39,7 @@ public class ProductService {
 
     public ProductDto saveProduct(ProductDto productDto) throws ProductNotFoundException {
         if (productDto.getId() != null && productDto.getId() > 0
-                && productRepository.existsById(productDto.getId())) {
+                && !productRepository.existsById(productDto.getId())) {
             throw new ProductNotFoundException();
         }
         Product product = mapper.productDtoToModel(productDto);

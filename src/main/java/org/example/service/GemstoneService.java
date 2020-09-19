@@ -39,7 +39,7 @@ public class GemstoneService {
 
     public GemstoneDto saveGemstone(GemstoneDto gemstoneDto) throws GemstoneNotFoundException {
         if (gemstoneDto.getId() != null && gemstoneDto.getId() > 0
-                && gemstoneRepository.existsById(gemstoneDto.getId())) {
+                && !gemstoneRepository.existsById(gemstoneDto.getId())) {
             throw new GemstoneNotFoundException();
         }
         Gemstone gemstone = mapper.gemstoneDtoToModel(gemstoneDto);
