@@ -27,9 +27,9 @@ public class Product {
     private String detail;
     private Long quantity;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductGemstone> productGemstones;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductMaterial> productMaterials;
 }

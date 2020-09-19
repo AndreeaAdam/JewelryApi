@@ -28,7 +28,7 @@ CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `gemstone`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gemstone` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,9 +98,9 @@ DROP TABLE IF EXISTS `material`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `material` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `product` (
   KEY `GENDER_ID_FK_idx` (`gender_id`),
   CONSTRAINT `CATEGORY_ID_FK` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `GENDER_ID_FK` FOREIGN KEY (`gender_id`) REFERENCES `gender` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Diamond Vine Circle Pendant',4,6800.00,1,'With an intensity that rivals the night sky, we celebrate the blazing briliance of our diamonds.',' Mixed-cut diamonds add dimension to the fluid fronts of this striking pendant. 18k rose gold with round brilliant and marquise diamonds, size large.',50),(2,'Pearl and Diamond Earrings',3,7200.00,1,'Inspired by the fire and radiance of our superlative diamonds, we use a unique combination of cuts for a distinctly romantic sensibility. Platinum with South Sea cultured pearls and round brilliant diamonds.',' Pearls, 11-12 mm. Diamonds, carat total weight .57.',50),(3,'Makers 1.D. Tag Pendant  ',4,2100.00,2,'This rectangular I.D. tag pendant is designed is sterling silver and 18k gold for a sleek style statement. Crafted with a makers symbol inspired by the renowned Tiffany hollowware shop. Personalize this contemporary tag pendant with custom engraving.',' Sterling silver and 18k gold. Tag, 13x.7. On a 24\" chain.',50),(4,'Diamond and Pink Opal Circle Pendant',4,2550.00,1,'Traced with scintillating diamonds, this circle pendant features pink opal, a highly covetes stone found in nature. The luminous pink hue of the stone beautifully accents the radiant 18k rose gold design.','18k rose gold with pink opal and round brilliant diamonds. Circle, 16 mm diameter. Carat total weight 05.',50),(5,'Makers Bar Pendnt in 18k Gold',4,2800.00,2,'This pendant\'s statement-making vertical bar, designed in warm 18k gold, is accented with a makers symbol. Style this bar pendant on its own or mix and  match with other jewelry.','18k gold. Bar, 1.4\" long. On a 24\" chain.',50),(6,'Markers 27 mm Square Watch',6,3400.00,2,'Watch in stainless steel with a dark gray dial. 27 x 27 mm case. Self-winding mechanical movement.','Power reserve 38 hours. Water resistant to 50 meters/ 160 feet/5 ATM. Swiss-made.',50),(7,'Chronograpg 42 MM',6,5900.00,2,'Men\'s chronograph watch in stainless steel. White soleil dial features silver poudre numerals.','42 mm case. Self-winding mechanical movement. Power reserve 42 hours. Water resistant to 100 meters/ 330 feet/ 10 ATM. Swiss-made.',50),(8,'25 mm Round Watch',6,2500.00,1,'Watch in stainless steel, in a limited series of 5. 25 mm case with round briliant diamonds.','Carat total weight .03. Quartz movement. Water resistant to 30 meters/ 100 feet/ 3 ATM. Swiss-made',50),(9,'Tennis Bracelet',2,15500.00,1,'Inspired by the fire and radiance of our superlative diamonds, we use a unique combination of cuts for a distinctly romantic sesibility.','Platinum with diamonds. Marquise diamonds, carat total weight .18. Round brilliant diamonds, carat total weight2.90.',50),(10,'Olive Leaf Climber Earrings',3,325.00,1,'Inspired by the olive branch, a symbol of peace and abundance.','Original designs copyrighted by Paloma Picasso. Sterling silver.',50),(11,'Elephant Charm',5,275.00,1,'We always had a powerful relationship with nature and a long history of supporting wildlife conservation.','Sterling silver. Size mini.',50),(12,'Heartlocket pendant',4,2550.00,1,'Locket in 18k gold.','Size large. ',50),(13,'Engagement Ring in 18k Gold',1,24800.00,1,'A true design masterpiece, this ring is the most iconic engagement ring. Flawlessly engineered, the six-prong setting virtually disappears and alloes the brilliant diamond to float above the warm 18k yellow gold band into the light.','18k yellow gold with diamonds.',50),(14,'Bangle',2,66000.00,1,'The lyrical Paloma\'s Medoly collection is crafted from interloching bands that gently shift shape as they glide with the body, always falling back together as a whole.','18k withe gold. Size large. Round brilliant diamonds, carat total weight 13.96.',50),(15,'Color by the Yard Earrings',3,1100.00,1,'Earrings in 18k gold with two round rubies','Carat total weight .22. Original design copyrighted by Elsa Peretti',50),(16,'Five-row Ring',1,7400.00,1,'Streamlined and moder, the Tiffany Metro collection twinkles like a nighttime city skyline. five rows of dazzling diamonds make this ring a stunning statement piece','18k white gold with round brilliant diamonds. Carat total weight .90.',50),(17,'Cabochon Ring',1,2300.00,1,'A smooth, tactile cabochon in a fluid setting that is signature Peretti.','18k gold and tiger\'s eye. Size mini, 15.5 mm wide. ',50),(18,'Open Heart Pendant',4,1550.00,1,'The simple, evocative shape of Elsa Peretti Open Heart designs celebrates the spirit of love. A row of brilliant yellow diamonds accentuates the sensual curves of this pendant.','18k gold with five round yellow diamonds. 16 mm wide. Carat total weight .04',50),(19,'Diamond and Tiger\'sEye Circle Pendant',4,2550.00,1,'Traced with scintillating diamonds, this circle pendant features tiger\'s eye - a unique variety of quartz found in nature - resulting in a striking design with a silky finish.','18k gold tiger\'s eye and round brilliant diamonda. Circle, 16 mm diameter. Carat total weight .05.',50),(20,'Pearls by the Yard Bracelet',2,500.00,1,'Luminous pearls scattered along a delicate chain.','18k gold with five freshwater cultured pearls. Size medium. Pearls 6-6.5 mm.',50),(21,'Mother-of-pearl Wire Bracelet',2,1850.00,1,'This modern bracelet is emhanced with luminous mother-of-pearl a natural, iridescent material found is oyster shells-creating a bold design with high shine and elegant luster.','18k rise gold with mother-of-pearl. Size medium.',50),(22,'Makers 27 mm Square Watch',6,17000.00,2,'Watch in 18k rose gold with a rose gold soleil dial and applied gray numerals in a limited edition of 3.','On a gray alogator strap. 27 x 27 mm square case. Power reserve 42 hours. Water resistant to 50 meters/ 165 feet/5 ATM.',50),(23,'Hand 46.5 x 27.5 mm Watch',6,4100.00,2,'Watch in stainless steel. Blue guilloche dial features silver poudre numerals. On a blue aligator strap.','46.5 x 27.5 mm case. Self winding mechanical movement. Water resistant to 30 meter/ 100 feet/ 3 ATM.',50),(24,'Makers Wide Chain Bracelet',2,900.00,2,'Features sterling silver and 18k gold, this mixed metal wide chain bracelet captures the utilitarian spirit of classic American design.','Sterling silver and 18k gold. Size medium.',50),(25,'Makers Sunglasses',7,750.00,2,NULL,NULL,50);
+INSERT INTO `product` VALUES (1,'Diamond Vine Circle Pendant',4,6800.00,1,'With an intensity that rivals the night sky, we celebrate the blazing briliance of our diamonds.',' Mixed-cut diamonds add dimension to the fluid fronts of this striking pendant. 18k rose gold with round brilliant and marquise diamonds, size large.',50),(2,'Pearl and Diamond Earrings',3,7200.00,1,'Inspired by the fire and radiance of our superlative diamonds, we use a unique combination of cuts for a distinctly romantic sensibility. Platinum with South Sea cultured pearls and round brilliant diamonds.',' Pearls, 11-12 mm. Diamonds, carat total weight .57.',50),(3,'Makers 1.D. Tag Pendant  ',4,2100.00,2,'This rectangular I.D. tag pendant is designed is sterling silver and 18k gold for a sleek style statement. Crafted with a makers symbol inspired by the renowned Tiffany hollowware shop. Personalize this contemporary tag pendant with custom engraving.',' Sterling silver and 18k gold. Tag, 13x.7. On a 24\" chain.',50),(4,'Diamond and Pink Opal Circle Pendant',4,2550.00,1,'Traced with scintillating diamonds, this circle pendant features pink opal, a highly covetes stone found in nature. The luminous pink hue of the stone beautifully accents the radiant 18k rose gold design.','18k rose gold with pink opal and round brilliant diamonds. Circle, 16 mm diameter. Carat total weight 05.',50),(5,'Makers Bar Pendnt in 18k Gold',4,2800.00,2,'This pendant\'s statement-making vertical bar, designed in warm 18k gold, is accented with a makers symbol. Style this bar pendant on its own or mix and  match with other jewelry.','18k gold. Bar, 1.4\" long. On a 24\" chain.',50),(6,'Markers 27 mm Square Watch',6,3400.00,2,'Watch in stainless steel with a dark gray dial. 27 x 27 mm case. Self-winding mechanical movement.','Power reserve 38 hours. Water resistant to 50 meters/ 160 feet/5 ATM. Swiss-made.',50),(7,'Chronograpg 42 MM',6,5900.00,2,'Men\'s chronograph watch in stainless steel. White soleil dial features silver poudre numerals.','42 mm case. Self-winding mechanical movement. Power reserve 42 hours. Water resistant to 100 meters/ 330 feet/ 10 ATM. Swiss-made.',50),(8,'25 mm Round Watch',6,2500.00,1,'Watch in stainless steel, in a limited series of 5. 25 mm case with round briliant diamonds.','Carat total weight .03. Quartz movement. Water resistant to 30 meters/ 100 feet/ 3 ATM. Swiss-made',50),(9,'Tennis Bracelet',2,15500.00,1,'Inspired by the fire and radiance of our superlative diamonds, we use a unique combination of cuts for a distinctly romantic sesibility.','Platinum with diamonds. Marquise diamonds, carat total weight .18. Round brilliant diamonds, carat total weight2.90.',50),(10,'Olive Leaf Climber Earrings',3,325.00,1,'Inspired by the olive branch, a symbol of peace and abundance.','Original designs copyrighted by Paloma Picasso. Sterling silver.',50),(11,'Elephant Charm',5,275.00,1,'We always had a powerful relationship with nature and a long history of supporting wildlife conservation.','Sterling silver. Size mini.',50),(12,'Heartlocket pendant',4,2550.00,1,'Locket in 18k gold.','Size large. ',50),(13,'Engagement Ring in 18k Gold',1,24800.00,1,'A true design masterpiece, this ring is the most iconic engagement ring. Flawlessly engineered, the six-prong setting virtually disappears and alloes the brilliant diamond to float above the warm 18k yellow gold band into the light.','18k yellow gold with diamonds.',50),(14,'Bangle',2,66000.00,1,'The lyrical Paloma\'s Medoly collection is crafted from interloching bands that gently shift shape as they glide with the body, always falling back together as a whole.','18k withe gold. Size large. Round brilliant diamonds, carat total weight 13.96.',50),(15,'Color by the Yard Earrings',3,1100.00,1,'Earrings in 18k gold with two round rubies','Carat total weight .22. Original design copyrighted by Elsa Peretti',50),(16,'Five-row Ring',1,7400.00,1,'Streamlined and moder, the Tiffany Metro collection twinkles like a nighttime city skyline. five rows of dazzling diamonds make this ring a stunning statement piece','18k white gold with round brilliant diamonds. Carat total weight .90.',50),(17,'Cabochon Ring',1,2300.00,1,'A smooth, tactile cabochon in a fluid setting that is signature Peretti.','18k gold and tiger\'s eye. Size mini, 15.5 mm wide. ',50),(18,'Open Heart Pendant',4,1550.00,1,'The simple, evocative shape of Elsa Peretti Open Heart designs celebrates the spirit of love. A row of brilliant yellow diamonds accentuates the sensual curves of this pendant.','18k gold with five round yellow diamonds. 16 mm wide. Carat total weight .04',50),(19,'Diamond and Tiger\'sEye Circle Pendant',4,2550.00,1,'Traced with scintillating diamonds, this circle pendant features tiger\'s eye - a unique variety of quartz found in nature - resulting in a striking design with a silky finish.','18k gold tiger\'s eye and round brilliant diamonda. Circle, 16 mm diameter. Carat total weight .05.',50),(20,'Pearls by the Yard Bracelet',2,500.00,1,'Luminous pearls scattered along a delicate chain.','18k gold with five freshwater cultured pearls. Size medium. Pearls 6-6.5 mm.',50),(21,'Mother-of-pearl Wire Bracelet',2,1850.00,1,'This modern bracelet is emhanced with luminous mother-of-pearl a natural, iridescent material found is oyster shells-creating a bold design with high shine and elegant luster.','18k rise gold with mother-of-pearl. Size medium.',50),(22,'Makers 27 mm Square Watch',6,17000.00,2,'Watch in 18k rose gold with a rose gold soleil dial and applied gray numerals in a limited edition of 3.','On a gray alogator strap. 27 x 27 mm square case. Power reserve 42 hours. Water resistant to 50 meters/ 165 feet/5 ATM.',50),(23,'Hand 46.5 x 27.5 mm Watch',6,4100.00,2,'Watch in stainless steel. Blue guilloche dial features silver poudre numerals. On a blue aligator strap.','46.5 x 27.5 mm case. Self winding mechanical movement. Water resistant to 30 meter/ 100 feet/ 3 ATM.',50),(24,'Makers Wide Chain Bracelet',2,900.00,2,'Features sterling silver and 18k gold, this mixed metal wide chain bracelet captures the utilitarian spirit of classic American design.','Sterling silver and 18k gold. Size medium.',50),(25,'Makers Sunglasses',7,750.00,2,'dgg','dgd',50);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,13 +156,11 @@ DROP TABLE IF EXISTS `product_gemstone`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_gemstone` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int DEFAULT NULL,
+  `product_id` int NOT NULL,
   `gemstone_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `PG_GEMSTONE_ID_FK_idx` (`gemstone_id`),
-  KEY `PG_PRODUCT_ID_FK_idx` (`product_id`),
-  CONSTRAINT `PG_GEMSTONE_ID_FK` FOREIGN KEY (`gemstone_id`) REFERENCES `gemstone` (`id`),
-  CONSTRAINT `PG_PRODUCT_ID_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
+  KEY `PG_PRODUCT_ID_FK_idx` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -185,8 +183,8 @@ DROP TABLE IF EXISTS `product_material`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_material` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int DEFAULT NULL,
-  `material_id` int DEFAULT NULL,
+  `product_id` int NOT NULL,
+  `material_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `PRODUCT_ID_FK_idx` (`product_id`),
   KEY `MATERIAL_ID_FK_idx` (`material_id`),
@@ -222,7 +220,7 @@ CREATE TABLE `user` (
   `last_name` varchar(45) DEFAULT NULL,
   `telephone` varchar(15) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
-  `is_administrator` tinyint DEFAULT '1',
+  `is_administrator` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -250,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-19  8:54:41
+-- Dump completed on 2020-09-19 20:53:24

@@ -13,7 +13,7 @@ public class Gemstone {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "gemstone")
+    @OneToMany(mappedBy = "gemstone", cascade = CascadeType.ALL)
     private List<ProductGemstone> productGemstones;
 
 
