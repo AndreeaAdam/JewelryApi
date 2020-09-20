@@ -26,6 +26,11 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public UserDto authenticate(UserDto userDto) {
+        User user = userRepository.getUserByUserNameAndPassword(userDto.getUserName(), userDto.getPassword());
+        return mapper.userToDto(user);
+    }
+
     public UserDto getUserById(Long id) throws UserNotFoundException {
         User user = userRepository.findById(id).orElse(null);
         UserDto userDto;

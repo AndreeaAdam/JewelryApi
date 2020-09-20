@@ -33,6 +33,17 @@ public class UserController {
         return responseEntity;
     }
 
+    @PutMapping("/users/authenticate")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<UserDto> authenticate(@RequestBody UserDto userDto) {
+//        try {
+            responseEntity = new ResponseEntity(userService.authenticate(userDto), HttpStatus.OK);
+//        } catch (UserNotFoundException e) {
+//            responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
+//        }
+        return responseEntity;
+    }
+
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
