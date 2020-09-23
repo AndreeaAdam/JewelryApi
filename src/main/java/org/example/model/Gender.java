@@ -13,6 +13,6 @@ public class Gender {
     private Long id;
     private String type;
 
-    @OneToMany(mappedBy = "gender", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gender")
     private List<Product> products;
 }

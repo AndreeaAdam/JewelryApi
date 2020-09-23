@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.UserDto;
+import org.example.exception.UserAccessDeniedException;
 import org.example.exception.UserNotFoundException;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,12 @@ public class UserController {
     @PutMapping("/users/authenticate")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<UserDto> authenticate(@RequestBody UserDto userDto) {
-//        try {
+        try {
             responseEntity = new ResponseEntity(userService.authenticate(userDto), HttpStatus.OK);
-//        } catch (UserNotFoundException e) {
-//            responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
-//        }
+        } catch (UserAccessDeniedException e) {
+            responseEntity = new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
         return responseEntity;
     }
 

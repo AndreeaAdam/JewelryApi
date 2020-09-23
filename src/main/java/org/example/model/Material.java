@@ -14,7 +14,7 @@ public class Material {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "material", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "material")
     private List<ProductMaterial> productMaterials;
 
 }

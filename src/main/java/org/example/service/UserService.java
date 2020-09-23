@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.dto.UserDto;
+import org.example.exception.UserAccessDeniedException;
 import org.example.exception.UserNotFoundException;
 import org.example.mapper.UserMapper;
 import org.example.model.User;
@@ -26,8 +27,11 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDto authenticate(UserDto userDto) {
+    public UserDto authenticate(UserDto userDto) throws UserAccessDeniedException {
         User user = userRepository.getUserByUserNameAndPassword(userDto.getUserName(), userDto.getPassword());
+        if(userDto.getUserName() == null && userDto.getPassword() == null){
+            throw new UserAccessDeniedException();
+        }
         return mapper.userToDto(user);
     }
 
