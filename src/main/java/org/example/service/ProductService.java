@@ -6,6 +6,10 @@ import org.example.mapper.ProductMapper;
 import org.example.model.Product;
 import org.example.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,17 +22,24 @@ public class ProductService {
     @Autowired
     private ProductMapper mapper;
 
-    public List<ProductDto> getAllProducts() {
-        List<Product> products = productRepository.findAll();
-        return products
-                .stream()
+    public Page<Product> getAllProducts(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+    public Page<ProductDto> get(Integer pageNr, Integer pageSize){
+        Pageable pageable = PageRequest.of(pageNr, pageSize);
+        Page<Product> productPage = getAllProducts(pageable); // todo: not null ???
+
+        List<ProductDto> productDtoList = productPage.stream()
                 .map(product -> mapper.productToDto(product))
                 .collect(Collectors.toList());
+
+        return new PageImpl<>(productDtoList, pageable, productPage.getTotalElements());
     }
+
 
     public ProductDto getProductById(Long id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElse(null);
-        ProductDto productDto = null;
+        ProductDto productDto;
         if (product != null) {
             productDto = mapper.productToDto(product);
         } else{

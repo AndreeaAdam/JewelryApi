@@ -4,6 +4,7 @@ import org.example.dto.ProductDto;
 import org.example.exception.ProductNotFoundException;
 import org.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +20,9 @@ public class ProductController {
     ResponseEntity responseEntity;
 
     @GetMapping("/products")
-    public List<ProductDto> readProducts() {
-        List<ProductDto> productDtos = productService.getAllProducts();
-        return productDtos;
+    public ResponseEntity<Page<ProductDto>> getProducts(@RequestParam(required = false, defaultValue = "0") Integer pageNr,
+                                                        @RequestParam(required = false, defaultValue = "20") Integer pageSize) {
+        return new ResponseEntity<>(productService.get(pageNr, pageSize), HttpStatus.OK);
     }
 
     @GetMapping("/products/{id}")
