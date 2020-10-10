@@ -2,10 +2,8 @@ package org.example.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,4 +18,7 @@ public class User {
     private String telephone;
     private String email;
     private boolean isAdministrator;
+
+    @OneToMany(mappedBy = "user")
+    private List<Cart> carts;
 }

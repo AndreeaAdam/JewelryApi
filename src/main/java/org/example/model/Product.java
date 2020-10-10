@@ -17,7 +17,7 @@ public class Product {
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"))
     private Category category;
 
-    private String  price;
+    private int  price;
 
     @ManyToOne
     @JoinColumn(name = "gender_id", foreignKey = @ForeignKey(name = "GENDER_ID_FK"))
@@ -32,4 +32,8 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<ProductMaterial> productMaterials;
+
+    @OneToMany(mappedBy = "product")
+    private List<Cart> carts;
+
 }
