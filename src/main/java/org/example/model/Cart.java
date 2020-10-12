@@ -24,4 +24,6 @@ public class Cart {
     private int price;
     private boolean isSold;
     private boolean isPayed;
+    private int total;
+
 }

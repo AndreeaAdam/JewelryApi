@@ -22,7 +22,7 @@ public class CartController {
         return cartDtos;
     }
 
-    @GetMapping("carts/{id}")
+    @GetMapping("/carts/{id}")
     public ResponseEntity<CartDto> getCartById(@PathVariable Long id) {
 
         try {

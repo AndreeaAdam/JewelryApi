@@ -17,7 +17,7 @@ public class Product {
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "CATEGORY_ID_FK"))
     private Category category;
 
-    private int  price;
+    private String  price;
 
     @ManyToOne
     @JoinColumn(name = "gender_id", foreignKey = @ForeignKey(name = "GENDER_ID_FK"))

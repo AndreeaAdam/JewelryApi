@@ -13,6 +13,7 @@ public class CartDto {
     private int price;
     private boolean isSold;
     private boolean isPayed;
+    private int total;
 
     private Long productId;
     private Long userId;
