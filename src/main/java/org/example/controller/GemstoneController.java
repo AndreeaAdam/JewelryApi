@@ -18,9 +18,8 @@ public class GemstoneController {
     ResponseEntity responseEntity;
 
     @GetMapping("/gemstones")
-    public List<GemstoneDto> readGemstones() {
-        List<GemstoneDto> gemstoneDtos = gemstoneService.getAllGemstones();
-        return gemstoneDtos;
+    public ResponseEntity<List<GemstoneDto>> readGemstones() {
+        return new ResponseEntity<>(gemstoneService.getAllGemstones(), HttpStatus.OK);
     }
 
     @GetMapping("/gemstones/{id}")

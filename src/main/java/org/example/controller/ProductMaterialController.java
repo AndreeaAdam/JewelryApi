@@ -18,9 +18,8 @@ public class ProductMaterialController {
     ResponseEntity responseEntity;
 
     @GetMapping("product-materials")
-    public List<ProductMaterialDto> readProductMaterials() {
-        List<ProductMaterialDto> productMaterialDtos = productMaterialService.getAllProductMaterials();
-        return productMaterialDtos;
+    public ResponseEntity<List<ProductMaterialDto>> readProductMaterials() {
+        return new ResponseEntity<>(productMaterialService.getAllProductMaterials(), HttpStatus.OK);
     }
 
     @GetMapping("product-materials/{id}")

@@ -18,9 +18,8 @@ public class MaterialController {
     ResponseEntity responseEntity;
 
     @GetMapping("/materials")
-    public List<MaterialDto> readMaterials() {
-        List<MaterialDto> materialDtos = materialService.getAllMaterials();
-        return materialDtos;
+    public ResponseEntity<List<MaterialDto>> readMaterials() {
+        return new ResponseEntity<>(materialService.getAllMaterials(), HttpStatus.OK);
     }
 
     @GetMapping("/materials/{id}")

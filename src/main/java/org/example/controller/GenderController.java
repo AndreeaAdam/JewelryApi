@@ -19,9 +19,8 @@ public class GenderController {
     ResponseEntity responseEntity;
 
     @GetMapping("/genders")
-    public List<GenderDto> readGenders() {
-        List<GenderDto> genderDtos = genderService.getAllGenders();
-        return genderDtos;
+    public ResponseEntity<List<GenderDto>> readGenders() {
+        return new ResponseEntity<>(genderService.getAllGenders(), HttpStatus.OK);
     }
 
     @GetMapping("/genders/{id}")

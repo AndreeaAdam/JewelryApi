@@ -18,9 +18,8 @@ public class ProductGemstoneController {
     ResponseEntity responseEntity;
 
     @GetMapping("/product-gemstones")
-    public List<ProductGemstoneDto> readProductGemstones() {
-        List<ProductGemstoneDto> productGemstoneDtos = productGemstoneService.getAllProductGemstones();
-        return productGemstoneDtos;
+    public ResponseEntity<List<ProductGemstoneDto>> readProductGemstones() {
+        return new ResponseEntity<>(productGemstoneService.getAllProductGemstones(), HttpStatus.OK);
     }
 
     @GetMapping("/product-gemstones/{id}")

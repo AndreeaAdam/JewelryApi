@@ -18,9 +18,8 @@ public class CategoryController {
     ResponseEntity responseEntity;
 
     @GetMapping("/categories")
-    public List<CategoryDto> readCategory() {
-        List<CategoryDto> categoryDtos = categoryService.getAllCategories();
-        return categoryDtos;
+    public ResponseEntity<List<CategoryDto>> readCategory() {
+        return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
     }
 
     @GetMapping("categories/{id}")
